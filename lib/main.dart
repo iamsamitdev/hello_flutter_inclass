@@ -28,6 +28,17 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+
+  // กำหนด properties
+  int _counter = 0;
+
+  // สร้าง method สำหรับการเพิ่มค่าตัวเลข
+  void _incrementCounter(){
+    setState(() {
+       _counter++;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -44,8 +55,27 @@ class _MyHomePageState extends State<MyHomePage> {
         ],
       ),
       body: Center(
-        child: Text('This is my content'),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Text(
+              'กดปุ่มด้านล่างเพื่อเพิ่มจำนวน',
+              style: TextStyle(fontSize: 24.0, color: Colors.blue),
+            ),
+            Text(
+              '$_counter',
+              style: TextStyle(fontSize: 100.0),
+            )
+          ],
+        )
       ),
+      
+      floatingActionButton: FloatingActionButton(
+        onPressed: _incrementCounter,
+        tooltip: 'กดเพิ่มจำนวน',
+        child: Icon(Icons.add),
+      ),
+
     );
   }
 }
